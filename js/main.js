@@ -29,46 +29,47 @@ Table of Content
 
 ----------------------------------- */
 
-$(window).on('load', function() {
-		
+$(window).on('load', function () {
+
 	/* -----------------------------------
 				1. Preloader
 	----------------------------------- */
-	$("#preloader").delay(1000).addClass('loaded');
-	
+    $("#preloader").delay(1000).addClass('loaded');
+
 	/* -----------------------------------
 			  2. Sound Setup
 	----------------------------------- */
-	$('body').append('<audio loop autoplay volume="0" id="audio-player"><source src="music.mp3" type="audio/mpeg"></audio>');
-    	var audio = document.getElementById("audio-player");
-    	audio.volume = 0.2;
-	
-	if($(window).length) {
-		$('.music-bg').css({'visibility':'visible'});
-		$('body').addClass("audio-on");
-		if ($('body').hasClass('audio-off')) {
-        	$('body').removeClass('audio-on');
-		} 
-		$(".music-bg").on('click', function() {
-			$('body').toggleClass("audio-on audio-off");         
-			if ($('body').hasClass('audio-off')) {
-				audio.pause();
-			} 
-			if ($('body').hasClass('audio-on')) {
-				audio.play();
-			}
-		});
-	}
-	
+    $('body').append('<audio loop volume="0" id="audio-player"><source src="https://aristovnik.com/music.mp3" type="audio/mpeg"></audio>');
+    var audio = document.getElementById("audio-player");
+    audio.volume = 0.1;
+
+    if ($(window).length) {
+        $('.music-bg').css({ 'visibility': 'visible' });
+        $('body').addClass("audio-off");
+        if ($('body').hasClass('audio-off')) {
+            $('body').removeClass('audio-on');
+        }
+        $(".music-bg").on('click', function () {
+            $('body').toggleClass("audio-on audio-off");
+            if ($('body').hasClass('audio-off')) {
+                audio.pause();
+            }
+            if ($('body').hasClass('audio-on')) {
+                audio.play();
+                console.log("Hello")
+            }
+        });
+    }
+
 	/* -----------------------------------
 			3. Isotope Portfolio Setup
 	----------------------------------- */
-    if( $('.portfolio-items').length ) {
+    if ($('.portfolio-items').length) {
         var $elements = $(".portfolio-items"),
             $filters = $('.portfolio-filter ul li');
         $elements.isotope();
 
-        $filters.on('click', function(){
+        $filters.on('click', function () {
             $filters.removeClass('active');
             $(this).addClass('active');
             var selector = $(this).data('filter');
@@ -86,42 +87,42 @@ $(window).on('load', function() {
             });
         });
     }
-	
+
 	/* -----------------------------------
 			4. Blogs Masonry Setup
 	----------------------------------- */
     $('.blog-masonry').isotope({ layoutMode: 'moduloColumns' });
-	
+
 	/* -----------------------------------
 	      	5. YouTube Video
 	----------------------------------- */
-	$("#play-video").YTPlayer();
-	
+    $("#play-video").YTPlayer();
+
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
-	
+
 	/* -----------------------------------
 			6. Active Current Link
 	----------------------------------- */
-    $('.header-main ul li a').on('click',function() {
-        if($('.header-main.on').length) {
+    $('.header-main ul li a').on('click', function () {
+        if ($('.header-main.on').length) {
             $('.header-main').removeClass('on');
         }
     });
-	
+
 	/* -----------------------------------
 		7. Mobile Toggle Click Setup
 	----------------------------------- */
-    $('.header-toggle').on('click', function() {
+    $('.header-toggle').on('click', function () {
         $('.header-main').toggleClass('on');
     });
-	
+
 	/* -----------------------------------
 	      8. Testimonials OwlCarousel
 	----------------------------------- */
-	$(".testimonial .owl-carousel").owlCarousel({
+    $(".testimonial .owl-carousel").owlCarousel({
         loop: true,
         margin: 30,
         autoplay: true,
@@ -141,26 +142,26 @@ $(document).ready(function() {
             },
         },
     });
-	
+
 	/* -----------------------------------
 	      	9. Chart Setup
 	----------------------------------- */
-	if ($('.chart').length > 0) {
-	    $('.chart').easyPieChart({
-          trackColor:'#0e0f10',
-	      scaleColor:false,
-	      easing: 'easeOutBounce',
-	      scaleLength: 4,
-	      lineCap: 'square',
-	      lineWidth:5,
-	      size:130,
-	      animate: {
-	                duration: 2500,
-	                enabled: true
-	    	}
-	 	});
-	 }
-	
+    if ($('.chart').length > 0) {
+        $('.chart').easyPieChart({
+            trackColor: '#0e0f10',
+            scaleColor: false,
+            easing: 'easeOutBounce',
+            scaleLength: 4,
+            lineCap: 'square',
+            lineWidth: 5,
+            size: 130,
+            animate: {
+                duration: 2500,
+                enabled: true
+            }
+        });
+    }
+
 	/* -----------------------------------
 	      	10. Portfolio Tilt Setup
 	----------------------------------- */
@@ -170,32 +171,32 @@ $(document).ready(function() {
         maxGlare: .6,
         reverse: true
     });
-	
+
 	/* -----------------------------------
 	      11. Portfolio Image Link
 	----------------------------------- */
-	$(".portfolio-items .image-link").magnificPopup({
-		type: "image"
-	});
-	
+    $(".portfolio-items .image-link").magnificPopup({
+        type: "image"
+    });
+
 	/* -----------------------------------
 	      12. Portfolio Video Link
 	----------------------------------- */
-	$(".portfolio-items .video-link").magnificPopup({
-		type: "iframe"
-	});
-	
+    $(".portfolio-items .video-link").magnificPopup({
+        type: "iframe"
+    });
+
 	/* -----------------------------------
 	      13. Blog Video Link
 	----------------------------------- */
-	$(".pt-blog .blog-item .thumbnail .btn-play").magnificPopup({
-		type: "iframe"
-	});
-	
+    $(".pt-blog .blog-item .thumbnail .btn-play").magnificPopup({
+        type: "iframe"
+    });
+
 	/* -----------------------------------
 	    14. Validate Contact Form
 	----------------------------------- */
-	if ($("#contact-form").length) {
+    if ($("#contact-form").length) {
         $("#contact-form").validate({
             rules: {
                 name: {
@@ -204,7 +205,7 @@ $(document).ready(function() {
                 },
 
                 email: "required",
-				
+
             },
 
             messages: {
@@ -218,18 +219,18 @@ $(document).ready(function() {
                     url: "mail.php",
                     data: $(form).serialize(),
                     success: function () {
-                        $( "#loader").hide();
-                        $( "#success").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#success").slideUp( "slow" );
+                        $("#loader").hide();
+                        $("#success").slideDown("slow");
+                        setTimeout(function () {
+                            $("#success").slideUp("slow");
                         }, 3000);
                         form.reset();
                     },
-                    error: function() {
-                        $( "#loader").hide();
-                        $( "#error").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#error").slideUp( "slow" );
+                    error: function () {
+                        $("#loader").hide();
+                        $("#error").slideDown("slow");
+                        setTimeout(function () {
+                            $("#error").slideUp("slow");
                         }, 3000);
                     }
                 });
@@ -238,27 +239,27 @@ $(document).ready(function() {
 
         });
     }
-	
+
 	/* -----------------------------------
 	      	5. Glitch Effect
 	----------------------------------- */
-	
-	$(".glitch").mgGlitch({
-		destroy: false,
-		glitch: true,
-		scale: true,
-		blend: true,
-		blendModeType: "hue",
-		glitch1TimeMin: 200,
-		glitch1TimeMax: 400,
-		glitch2TimeMin: 10,
-		glitch2TimeMax: 100
-	});
-	
-	/* Google Map Setup */
-    if($('#map').length) {
+
+    $(".glitch").mgGlitch({
+        destroy: false,
+        glitch: true,
+        scale: true,
+        blend: true,
+        blendModeType: "hue",
+        glitch1TimeMin: 200,
+        glitch1TimeMax: 400,
+        glitch2TimeMin: 10,
+        glitch2TimeMax: 100
+    });
+
+    /* Google Map Setup */
+    if ($('#map').length) {
         initMap();
-     };
+    };
 
 });
 
@@ -271,9 +272,9 @@ function initMap() {
         zoom = $("#map").data('zoom'),
         cordinates = new google.maps.LatLng(latitude, longitude);
 
-    var styles = [{"stylers":[{"saturation":-100},{"gamma":0.8},{"lightness":4},{"visibility":"on"}]},{"featureType":"landscape.natural","stylers":[{"visibility":"on"},{"color":"#5dff00"},{"gamma":4.97},{"lightness":-5},{"saturation":100}]}];
-	
-        var mapOptions = {
+    var styles = [{ "stylers": [{ "saturation": -100 }, { "gamma": 0.8 }, { "lightness": 4 }, { "visibility": "on" }] }, { "featureType": "landscape.natural", "stylers": [{ "visibility": "on" }, { "color": "#5dff00" }, { "gamma": 4.97 }, { "lightness": -5 }, { "saturation": 100 }] }];
+
+    var mapOptions = {
         zoom: zoom,
         center: cordinates,
         mapTypeControl: false,
